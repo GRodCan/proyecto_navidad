@@ -1,0 +1,51 @@
+const mongoose = require('mongoose');
+
+const objectSchema = {
+    name: { 
+        type: String, 
+        required: true,
+    },
+    id: { 
+        type: String, 
+        required: true 
+    },
+    nametype: { 
+        type: String, 
+        required: true 
+    },
+    recclass: { 
+        type: String, 
+        required: true 
+    },
+    mass:{
+        type: String,
+        required: true
+    },
+    fall:{
+        type: String,
+        required: true
+    },
+    year:{
+        type: String,
+        required: true
+    },
+    reclat:{
+        type: String,
+        required: true
+    },
+    reclong:{
+        type: String,
+        required: true
+    },
+    orbit_class:{
+        type: Object,
+        required: true
+    }
+    
+};
+// Crear el esquema
+const landingSchema = mongoose.Schema(objectSchema);
+// Crear el modelo
+const Landing = mongoose.model('Landing', landingSchema);
+
+module.exports = Landing;
