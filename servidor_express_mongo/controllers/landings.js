@@ -1,5 +1,5 @@
 const Landing=require('../models/landing');
-const Neas=require('../models/neas');
+
 
 
 //http://localhost:5000/api/astronomy/landings?minimum_mass=2000
@@ -45,6 +45,7 @@ const getLandingbyMass = async (req,res) => {
         res.status(400).json({"error":err})
     } 
 }
+
 const getLandingbyClass = async (req,res) => {
     
     const {recclass}= req.params
@@ -57,9 +58,9 @@ const getLandingbyClass = async (req,res) => {
     } 
 }
 
-const apiControllers = {
+const landingsControllers = {
     getLandingbyQuery,
     getLandingbyMass,
     getLandingbyClass
 };
-module.exports=apiControllers;
+module.exports=landingsControllers;

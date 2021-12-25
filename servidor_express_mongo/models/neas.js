@@ -46,6 +46,6 @@ const objectSchema = {
 // Crear el esquema
 const neasSchema = mongoose.Schema(objectSchema);
 // Crear el modelo
-const Neas = mongoose.model('Neas', neasSchema);
+const NEAs = mongoose.model('Neas', neasSchema);
 
-module.exports = Neas;
+module.exports = NEAs;
