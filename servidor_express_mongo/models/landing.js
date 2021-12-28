@@ -18,7 +18,7 @@ const objectSchema = {
         required: true 
     },
     mass:{
-        type: String,
+        type: Number,
         required: true
     },
     fall:{
@@ -37,7 +37,7 @@ const objectSchema = {
         type: String,
         required: true
     },
-    orbit_class:{
+    geolocation:{
         type: Object,
         required: true
     }
