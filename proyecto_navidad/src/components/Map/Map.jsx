@@ -3,26 +3,30 @@ import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import {Icon} from "leaflet"
 import "./Map.css"
-import { CSSProperties } from "react";
+
+
 const Map = () => {
+
+  const icon =new Icon({
+    iconUrl: '/meteorito.svg',
+    iconSize: [25,25]
+  }) 
+
   const position = [51.505, -0.09]
-  const position2 = [51.516, -0.09]
+  const position2 = [54.516, -3.09]
   const arrPositions= [position,position2]
   return (
-  <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+  <MapContainer center={position} zoom={5} scrollWheelZoom={false}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    {/* <Marker position={position}> */}
+    
       {arrPositions.map((position,i)=>
-      <Marker position={position}>
-        <Popup>{i}</Popup>
+      <Marker position={position} key={i} icon={icon}>
+        <Popup >{i}</Popup>
       </Marker>)}
-      {/* <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
-      </Popup> */}
-    {/* </Marker> */}
+      
   </MapContainer>
 )  ;
 };
