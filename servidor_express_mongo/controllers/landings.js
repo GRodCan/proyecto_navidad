@@ -14,8 +14,8 @@ const getLandingbyQuery = async (req,res) => {
     let data;
     
     try{
-        if(minimum_mass){
-            data = await Landing.find({'mass':{$gte:minimum_mass}}, 'name mass -_id');            
+        if(minimum_mass){            
+            data = await Landing.find({'mass':{"$gte":minimum_mass}}, 'name mass -_id');            
             res.status(200).json(data);
         }if(to||from){ 
             to&&from?
@@ -31,7 +31,7 @@ const getLandingbyQuery = async (req,res) => {
     }catch(err){
         res.status(400).json({"error":err})
     } 
-}
+    }
 
 
 const getLandingbyMass = async (req,res) => {
