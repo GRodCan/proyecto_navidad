@@ -7,7 +7,7 @@ export default function useDate(days) {
   
   const date= tenDays.toLocaleDateString().split("/")
   
-  console.log(date.reverse().join("-"))
   
-  return date.join("-");
+  
+  return date.reverse().join("-");
 }
