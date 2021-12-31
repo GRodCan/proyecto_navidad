@@ -15,7 +15,7 @@ const getLandingbyQuery = async (req,res) => {
     
     try{
         if(minimum_mass){            
-            data = await Landing.find({'mass':{"$gte":minimum_mass}}, 'name mass -_id');            
+            data = await Landing.find({'mass':{"$gte":minimum_mass}}, '-_id');            
             res.status(200).json(data);
         }if(to||from){ 
             to&&from?
@@ -23,9 +23,9 @@ const getLandingbyQuery = async (req,res) => {
                                             {"year":{$gte:from}},
                                             {"year":{$lte:(to+1)}}
                                             ] //Se le suma 1 porque todas las fechas de los years son mayores que el año en el momento 00:00 1-enero.
-                }, "name mass year -_id")
-            :from? data = await Landing.find({"year":{$gte:from}}, "name mass year -_id")
-            :data = await Landing.find({"year":{$lte:(to+1)}}, "name mass year -_id");
+                }, "-_id")
+            :from? data = await Landing.find({"year":{$gte:from}}, "-_id")
+            :data = await Landing.find({"year":{$lte:(to+1)}}, "-_id");
             res.status(200).json(data);
             }
     }catch(err){
@@ -39,7 +39,7 @@ const getLandingbyMass = async (req,res) => {
     const {mass}= req.params
     let data;
     try{
-        data = await Landing.find({"mass":mass}, "name mass -_id")
+        data = await Landing.find({"mass":mass}, "-_id")
         res.status(200).json(data);
     }catch(err){
         res.status(400).json({"error":err})
@@ -51,7 +51,7 @@ const getLandingbyClass = async (req,res) => {
     const {recclass}= req.params
     let data;
     try{
-        data = await Landing.find({"recclass":recclass}, "name recclass -_id")
+        data = await Landing.find({"recclass":recclass}, "-_id")
         res.status(200).json(data);
     }catch(err){
         res.status(400).json({"error":err})

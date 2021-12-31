@@ -14,7 +14,7 @@ const getNEAsbyQuery = async (req,res) => {
     
     try{
         if(orbit_class){
-            data = await NEAs.find({'orbit_class':orbit_class}, 'designation period_yr -_id');            
+            data = await NEAs.find({'orbit_class':orbit_class}, '-_id');            
             res.status(200).json(data);
         }
         if(to||from){ 
@@ -24,9 +24,9 @@ const getNEAsbyQuery = async (req,res) => {
                                             {"discovery_date":{$gte:from}},
                                             {"discovery_date":{$lte:(to+1)}}
                                             ] //Se le suma 1 porque todas las fechas de los years son mayores que el año en el momento 00:00 1-enero.
-                }, "designation period_yr discovery_date -_id")
-            :from? data = await NEAs.find({"discovery_date":{$gte:from}}, "designation period_yr discovery_date -_id")
-            :data = await NEAs.find({"discovery_date":{$lte:(to+1)}}, "designation period_yr discovery_date -_id");
+                }, "-_id")
+            :from? data = await NEAs.find({"discovery_date":{$gte:from}}, "-_id")
+            :data = await NEAs.find({"discovery_date":{$lte:(to+1)}}, "-_id");
             res.status(200).json(data);
             }
     }catch(err){
