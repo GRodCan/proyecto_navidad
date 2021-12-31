@@ -5,8 +5,10 @@ const apiRouter = require('./routes/api')
 
 require('./utils/dbmongo')
 
+
 const app = express()
 const port = 5000
+
 
 app.use(express.json())
 
